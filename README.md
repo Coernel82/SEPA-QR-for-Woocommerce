@@ -39,4 +39,4 @@ The function to cache a hashed QR is only needed if you want to use a link inste
 The program has been written by a professional programmer - however fully free of charge. The program comes as is and we cannot give support. I have no clue about it and the programmer can't work for free!
 
 # Full integration in Woocommerce
-I am more then happy if someone integrates the code into the Woocommerce core!
+I am more then happy if someone integrates the code into the Woocommerce core! The topic is discussed here: https://github.com/woocommerce/woocommerce/issues/27661
