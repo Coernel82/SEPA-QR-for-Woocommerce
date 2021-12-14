@@ -12,9 +12,9 @@ places an image with the SEPA-QR-Code in the
 * email you get from woocommerce
 
 In the backend:
-* the QR-code-Generator creates the QR-code locally. There is **no Google-API nor external server in use**!
-* the QR-codegenerator is from [fellwell15](https://github.com/fellwell5/bezahlcode/)
-* registers a get-parameter mxp_qr for testing purposes and to later to have a link for the cached QR-Code
+* the QR code generator creates the QR-code locally. There is **no Google-API nor external server in use**!
+* the QR code generator is from [fellwell15](https://github.com/fellwell5/bezahlcode/)
+* plugin registers a get-parameter (configurable, default mxp_qr) for testing purposes and, if desired, to create links to the cached QR codes.
 * the prefix mxp is used throghout the plugin to avoid collisions with other plugins and functions. mxp stands for www.musicalexperten.de (musical experts). Remember where you've seen it first! ;-)
 
 # Configuration / translation / if it does not work
@@ -28,15 +28,15 @@ Install the plugin and order s.th. in your shop using BACS (direct bank transfer
 ## To test if the QR-Code generator is working
 www.yourwebpage.de/?mxp_qr=something  = creates a real QR with dummyvalues 11-11
 [Working example](https://www.musicalexperten.de/?mxp_qr=something)
-## To find and existing cached QR-Code (which does *not* exist)
+## To find an existing cached QR-Code, query for a valid md5 string. If it does not exist in cache or transients, a sad smiley will appear.
 www.yourwebpage.de/?mxp_qr=351436ef4b279e1811a6c68a2dd58b1b 
 results in a sad smiley. [Working example](https://www.musicalexperten.de/?mxp_qr=351436ef4b279e1811a6c68a2dd58b1b)
 
 # Remarks
-The function to cache a hashed QR is only needed if you want to use a link instead of a picture inside the email. Details in the program code.
+Storing the QR code in cache or transients is only needed if you want to use a link instead of a picture inside the email. Details in the program code.
 
 # Support
-The program has been written by a professional programmer - however fully free of charge. The program comes as is and we cannot give support. I have no clue about it and the programmer can't work for free!
+The program has been written by a professional programmer - however fully free of charge and without detailed knowledge about WooCommerce. The program comes as is and we cannot give support. I have no clue about it and the programmer can't work for free!
 
 # Full integration in Woocommerce
 I am more then happy if someone integrates the code into the Woocommerce core! The topic is discussed here: https://github.com/woocommerce/woocommerce/issues/27661
