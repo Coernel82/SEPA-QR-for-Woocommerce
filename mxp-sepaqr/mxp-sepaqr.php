@@ -199,7 +199,7 @@ function mxp_create_qrcode ($amount,$orderid) {
 
 function mxp_get_transient_by_data ($amount,$id) {
 	  $transient = TRANSIENT_PREFIX . md5($amount. '_' . $id);
-	  if (defined(USE_TRANSIENTS)) { 
+	  if (defined('USE_TRANSIENTS')) { 
 		  return get_transient( $transient );
 	  }
       return wp_cache_get( $transient );
