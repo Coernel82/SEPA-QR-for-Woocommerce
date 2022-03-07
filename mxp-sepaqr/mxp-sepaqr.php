@@ -184,7 +184,7 @@ function mxp_create_qrcode ($amount,$orderid) {
   if ( empty($bic) ) { $bic = BACS_BIC; }
   if ( empty($company) ) { $company = BACS_COMPANY; }
   
-  require(dirname(__FILE__) . "/vendor/bezahlcode/bezahlcode.class.php");
+  require_once(dirname(__FILE__) . "/vendor/bezahlcode/bezahlcode.class.php");
   
   $bezahlcode = new Bezahlcode($iban, $bic, $company, "phpqrcode", false);
   $bezahlcode->generatePayload($payloadtext, $amount);
