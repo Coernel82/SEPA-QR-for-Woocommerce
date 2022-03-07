@@ -4,8 +4,9 @@ Plug-and-Play Plugin for Woocommerce
 The plugin comes as is and free. However a real person has put real work into it. So if you use it please do s.th. good. Use your efforts, your time for beneficial projects or whatever!
 # Installation
 Nothing special:
-* Downlaod the ZIP-file
-* In Woocommerce via "install" and upload or manually placing into the plugin folder.
+* Downlaod the ZIP-file via "Code --> Download Zip"
+* Extract ZIP-File and make a new ZIP-File from the mxp-sepaqr directory
+* In Woocommerce via "install" and upload or manually placing mxp-sepaqr.zip into the plugin folder.
 # What it does
 places an image with the SEPA-QR-Code in the
 * thank-you-page after placing an order
