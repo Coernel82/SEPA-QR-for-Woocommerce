@@ -62,9 +62,9 @@ function mxp_add_text_to_thankyoupage($order_id) {
     $order = wc_get_order( $order_id );
 	$order_data = $order->get_data(); 
     // do we need the user? if so: $user = $order->get_user();
-	if ( !empty($order->order_total) && (float)$order->order_total > 0 ) {
+	if ( !empty($order->get_total()) && (float)$order->get_total() > 0 ) {
 		echo '<p>' . THANKYOU_PAGE . '<br>';
-		echo '<img src="' . mxp_get_qrcode($order->order_total, $order_id) . '" alt="qr-code"></p>';
+		echo '<img src="' . mxp_get_qrcode($order->get_total(), $order_id) . '" alt="qr-code"></p>';
 	}
 }
 
@@ -82,10 +82,10 @@ add_action( 'woocommerce_thankyou_bacs', 'mxp_add_text_to_thankyoupage' );
 
 function mxp_email_after_order_table( $order, $sent_to_admin, $plain_text, $email ) { 
 	// TODO: check whether spam filters are triggered by embedded image data, 
-	// if so replace image with a link to the  qr minipage ( site_url() . '?' . QUERY_PARAM . '=' . md5($order->amount. '_' . $order->id)
+	// if so replace image with a link to the  qr minipage ( site_url() . '?' . QUERY_PARAM . '=' . md5($order->get_total(). '_' . $order->get_id())
 	// and activate USE_TRANSIENTS 
-	if ( !empty($order->order_total) && (float)$order->order_total > 0  && $order->get_payment_method() == 'bacs' ) {
-		echo '<p>' . THANKYOU_EMAIL . '<br> <img src="' . mxp_get_qrcode($order->order_total, $order->id) . '"></p>';
+	if ( !empty($order->get_total()) && (float)$order->get_total() > 0  && $order->get_payment_method() == 'bacs' ) {
+		echo '<p>' . THANKYOU_EMAIL . '<br> <img src="' . mxp_get_qrcode($order->get_total(), $order->get_id()) . '"></p>';
 	}
 }
 
