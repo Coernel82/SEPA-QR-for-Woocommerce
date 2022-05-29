@@ -117,7 +117,7 @@ function mxp_qrpage_from_hash($template) {
 		}
 		$html =  '<pre>QR-Code not found or expired. Doh!' . PHP_EOL . '</pre><img src="' . SAD_SMILEY . '" alt="Sad Smiley">';
 	} else {
-		$html = '<img src="' . $qrcode . '" alt="QR Code">';
+		$html = '<img class="bacs-qrcode" src="' . $qrcode . '" alt="QR Code">';
 	}
 	echo '<html><body><div>' . $html . ' </div></body></html>';
 	// bail out without returning since we are done and do not want a complete WP page
