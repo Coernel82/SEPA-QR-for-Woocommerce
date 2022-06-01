@@ -64,7 +64,7 @@ function mxp_add_text_to_thankyoupage($order_id) {
     // do we need the user? if so: $user = $order->get_user();
 	if ( !empty($order->get_total()) && (float)$order->get_total() > 0 ) {
 		echo '<p>' . THANKYOU_PAGE . '<br>';
-		echo '<img src="' . mxp_get_qrcode($order->get_total(), $order_id) . '" alt="qr-code"></p>';
+		echo '<img class="bcas-qrcode" src="' . mxp_get_qrcode($order->get_total(), $order_id) . '" alt="qr-code"></p>';
 	}
 }
 
@@ -85,7 +85,7 @@ function mxp_email_after_order_table( $order, $sent_to_admin, $plain_text, $emai
 	// if so replace image with a link to the  qr minipage ( site_url() . '?' . QUERY_PARAM . '=' . md5($order->get_total(). '_' . $order->get_id())
 	// and activate USE_TRANSIENTS 
 	if ( !empty($order->get_total()) && (float)$order->get_total() > 0  && $order->get_payment_method() == 'bacs' ) {
-		echo '<p>' . THANKYOU_EMAIL . '<br> <img src="' . mxp_get_qrcode($order->get_total(), $order->get_id()) . '"></p>';
+		echo '<p>' . THANKYOU_EMAIL . '<br> <img class="bacs-qrcode" src="' . mxp_get_qrcode($order->get_total(), $order->get_id()) . '"></p>';
 	}
 }
 
@@ -117,7 +117,7 @@ function mxp_qrpage_from_hash($template) {
 		}
 		$html =  '<pre>QR-Code not found or expired. Doh!' . PHP_EOL . '</pre><img src="' . SAD_SMILEY . '" alt="Sad Smiley">';
 	} else {
-		$html = '<img src="' . $qrcode . '" alt="QR Code">';
+		$html = '<img class="bacs-qrcode" src="' . $qrcode . '" alt="QR Code">';
 	}
 	echo '<html><body><div>' . $html . ' </div></body></html>';
 	// bail out without returning since we are done and do not want a complete WP page
