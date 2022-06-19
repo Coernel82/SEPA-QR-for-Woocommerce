@@ -177,7 +177,7 @@ function mxp_create_qrcode ($amount,$orderid) {
  if ( ! empty( $bacs_accounts[0] ) ) {
     $iban =  $bacs_accounts[0]['iban'];
     $bic = $bacs_accounts[0]['bic'];
-    // TODO: $company = $bacs_accounts[0]['????'];
+    $company = $bacs_accounts[0]['account_name'];
   }
   // fallbacks if empty: 
   if ( empty($iban) ) { $iban = BACS_IBAN; }
