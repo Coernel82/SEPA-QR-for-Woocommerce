@@ -13,7 +13,7 @@
  * Plugin Name:       MXP SEPA-QR-Code Addon for Woocommerce
  * Plugin URI:        https://github.com/Coernel82/SEPA-QR-for-Woocommerce
  * Description:       Adds a SEPA QR code to the Woocommerce Thankyou page and to the confirmation e-mail. The QR code is generated locally (using https://github.com/fellwell5/bezahlcode/) due to privacy reasons and is using the IBAN and BIC of the first BACS account.
- * Version:           1.0.2
+ * Version:           1.0.3
  * Author:            https://github.com/Coernel82/SEPA-QR-for-Woocommerce
  * Requires at least: 5.0
  * Requires PHP:	  7.0
@@ -43,7 +43,7 @@ define('TRANSIENT_LIFETIME', 3 * DAY_IN_SECONDS); //  for transients only, usele
 // if you need one, have a look at https://jeremyhixon.com/tool/wordpress-option-page-generator/
 
 define('THANKYOU_PAGE','Für eine bequeme Zahlung scanne diesen SEPA-QR-Code'); // PLAIN Text shown before QR code in TY page
-define('THANKYOU_EMAIL','Für eine bequeme Zahlung scanne diesen SEPA-QR-Code'); // PLAIN Text shown before QR code in Email 
+define('THANKYOU_EMAIL','Für eine bequeme Zahlung scanne diesen SEPA-QR-Code. Einige Email-Clients zeigen hier leider nichts an.'); // PLAIN Text shown before QR code in Email 
 define('BACS_IBAN',''); // optional: insert your IBAN as fallback
 define('BACS_BIC',''); // optional: insert your BIC as fallback
 define('BACS_COMPANY','Zahlungsempfaenger'); // optional: insert your business name as fallback
