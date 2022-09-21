@@ -84,7 +84,7 @@ function mxp_email_after_order_table( $order, $sent_to_admin, $plain_text, $emai
 	// TODO: check whether spam filters are triggered by embedded image data, 
 	// if so replace image with a link to the  qr minipage ( site_url() . '?' . QUERY_PARAM . '=' . md5($order->get_total(). '_' . $order->get_id())
 	// and activate USE_TRANSIENTS 
-	if ( !empty($order->get_total()) && (float)$order->get_total() > 0  && $order->get_payment_method() == 'bacs' ) {
+	if ( !empty($order->get_total()) && (float)$order->get_total() > 0 && $order->get_payment_method() == 'bacs' && ('on-hold' == $order->status || 'pending' == $order->status)) {
 		echo '<p>' . THANKYOU_EMAIL . '<br> <img class="bacs-qrcode" src="' . mxp_get_qrcode($order->get_total(), $order->get_id()) . '"></p>';
 	}
 }
