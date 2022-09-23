@@ -18,6 +18,23 @@ In the backend:
 * plugin registers a get-parameter (configurable, default mxp_qr) for testing purposes and, if desired, to create links to the cached QR codes.
 * the prefix mxp is used throghout the plugin to avoid collisions with other plugins and functions. mxp stands for www.musicalexperten.de (musical experts). Remember where you've seen it first! ;-)
 
+
+# Hooking into other plugins
+I use a plugin for [PDF-invoices and packaging slips](https://docs.wpovernight.com/home/woocommerce-pdf-invoices-packing-slips/pdf-template-action-hooks/).  Refer to this sample to hook the QR-Code into whatever you like:
+
+```php
+/* QR-Code in Rechnungen */
+add_action( 'wpo_wcpdf_after_order_details', 'wpo_wcpdf_qr_code', 10, 2 );
+function wpo_wcpdf_qr_code ($document_type, $order) {
+	require_once WP_PLUGIN_DIR . '/mxp-sepaqr/mxp-sepaqr.php';
+    $mxp_order = wc_get_order( $order);
+	$order_id  = $order->get_id();
+ 	if ( !empty($mxp_order->get_total()) && (float)$order->get_total() > 0 ) {
+		echo '<img class="bcas-qrcode" src="' . mxp_get_qrcode($order->get_total(), $order_id) . '" alt="qr-code"></p>';
+	} 
+}
+```
+
 # Configuration / translation / if it does not work
 The plugin comes with a little fallback: In case the BIC, IBAN, etc. are not shown open the **mxp-sepaqr.php** in the lines 45 to 50 you can hardcode some variables and translations. You'll find explanations in the comments.
 ## Advanced configuration of the qr-code itself
