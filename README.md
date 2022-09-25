@@ -2,6 +2,8 @@
 Plug-and-Play Plugin for Woocommerce
 # Before you start
 The plugin comes as is and free. However a real person has put real work into it. So if you use it please do s.th. good. Use your efforts, your time for beneficial projects or whatever!
+# Prerequisite
+php GD2 extension must be installed as the QR-Code generator by [fellwell15](https://github.com/fellwell5/bezahlcode/) requires this.
 # Installation
 Nothing special:
 * Downlaod the ZIP-file via "Code --> Download Zip"
