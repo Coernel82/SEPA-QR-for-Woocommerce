@@ -38,7 +38,7 @@ function wpo_wcpdf_qr_code ($document_type, $order) {
 ```
 
 # Configuration / translation / if it does not work
-The plugin comes with a little fallback: In case the BIC, IBAN, etc. are not shown open the **mxp-sepaqr.php** in the lines 45 to 50 you can hardcode some variables and translations. You'll find explanations in the comments.
+The plugin comes with a little fallback: In case the BIC, IBAN, etc. are not shown open the **mxp-sepaqr.php** in the [programing code](https://github.com/Coernel82/SEPA-QR-for-Woocommerce/blob/afbacf58264c7afccd6b7f29e3f3105cb0e95b3b/mxp-sepaqr/mxp-sepaqr.php#L45-L50) you can hardcode some variables and translations. You'll find explanations in the comments.
 ## Advanced configuration of the qr-code itself
 Have a look at [fellwell15](https://github.com/fellwell5/bezahlcode/)
 
