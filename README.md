@@ -24,8 +24,12 @@ In the backend:
 # Hooking into other plugins
 I use a plugin for [PDF-invoices and packaging slips](https://docs.wpovernight.com/home/woocommerce-pdf-invoices-packing-slips/pdf-template-action-hooks/).  Refer to this sample to hook the QR-Code into whatever you like:
 
+```
+/wp-content/themes/Your(Child)Theme/functions.php
+```
+
 ```php
-/* QR-Code in Rechnungen */
+/* QR-Code in invoices */
 add_action( 'wpo_wcpdf_after_order_details', 'wpo_wcpdf_qr_code', 10, 2 );
 function wpo_wcpdf_qr_code ($document_type, $order) {
 	require_once WP_PLUGIN_DIR . '/mxp-sepaqr/mxp-sepaqr.php';
