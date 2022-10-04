@@ -6,7 +6,8 @@ The plugin comes as is and free. However a real person has put real work into it
 php GD2 extension must be installed as the QR-Code generator by [fellwell15](https://github.com/fellwell5/bezahlcode/) requires this.
 # Installation
 Nothing special:
-* Downlaod the ZIP-file via "Code --> Download Zip"
+* (when released by Wordpress: Search for it and install the usual way)
+* Download the ZIP-file via "Code --> Download Zip"
 * Extract ZIP-File and make a new ZIP-File from the mxp-sepaqr directory
 * In Woocommerce via "install" and upload or manually placing mxp-sepaqr.zip into the plugin folder.
 # What it does
