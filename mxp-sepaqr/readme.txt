@@ -47,11 +47,11 @@ I use a plugin for [PDF-invoices and packaging slips](https://docs.wpovernight.c
 /* QR-Code in invoices */
 add_action( 'wpo_wcpdf_after_order_details', 'wpo_wcpdf_qr_code', 10, 2 );
 function wpo_wcpdf_qr_code ($document_type, $order) {
-	require_once WP_PLUGIN_DIR . '/mxp-sepaqr/mxp-sepaqr.php';
-    $mxp_order = wc_get_order( $order);
+	require_once WP_PLUGIN_DIR . '/mxp-sepaqr/muxp-sepaqr.php';
+    $muxp_order = wc_get_order( $order);
 	$order_id  = $order->get_id();
- 	if ( !empty($mxp_order->get_total()) && (float)$order->get_total() > 0 ) {
-		echo '<img class="bcas-qrcode" src="' . mxp_get_qrcode($order->get_total(), $order_id) . '" alt="qr-code"></p>';
+ 	if ( !empty($muxp_order->get_total()) && (float)$order->get_total() > 0 ) {
+		echo '<img class="bcas-qrcode" src="' . muxp_get_qrcode($order->get_total(), $order_id) . '" alt="qr-code"></p>';
 	} 
 }
 ```
