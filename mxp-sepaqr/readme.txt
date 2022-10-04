@@ -51,7 +51,7 @@ function wpo_wcpdf_qr_code ($document_type, $order) {
     $muxp_order = wc_get_order( $order);
 	$order_id  = $order->get_id();
  	if ( !empty($muxp_order->get_total()) && (float)$order->get_total() > 0 ) {
-		echo '<img class="bcas-qrcode" src="' . muxp_get_qrcode($order->get_total(), $order_id) . '" alt="qr-code"></p>';
+		echo '<img class="bacs-qrcode" src="' . muxp_get_qrcode($order->get_total(), $order_id) . '" alt="qr-code"></p>';
 	} 
 }
 ```
