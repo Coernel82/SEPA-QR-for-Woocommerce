@@ -10,9 +10,9 @@
  * @copyright 2022 BUFANG
  *
  * @wordpress-plugin
- * Plugin Name:       MUXP SEPA-QR-Code Addon for Woocommerce
+ * Plugin Name:       SEPA-QR-Code for Woocommerce
  * Plugin URI:        https://github.com/Coernel82/SEPA-QR-for-Woocommerce
- * Description:       Adds a SEPA QR code to the Woocommerce Thankyou page and to the confirmation e-mail. The QR code is generated locally (using https://github.com/fellwell5/bezahlcode/) due to privacy reasons and is using the IBAN and BIC of the first BACS account.
+ * Description:       Adds a SEPA QR code to the Woocommerce Thankyou page and to the confirmation e-mail. The QR code is generated locally due to privacy reasons and is using the IBAN and BIC of the first BACS account.
  * Version:           1.0.4
  * Author:            https://github.com/Coernel82/SEPA-QR-for-Woocommerce
  * Requires at least: 5.0
@@ -42,7 +42,7 @@ define('muxp_TRANSIENT_LIFETIME', 3 * DAY_IN_SECONDS); //  for transients only, 
 // in a better world, this data would be in fields on an admin page
 // if you need one, have a look at https://jeremyhixon.com/tool/wordpress-option-page-generator/
 
-define('muxp_THANKYOU_PAGE','For a convenient payment scan this qr code! <br>Für eine bequeme Zahlung scanne diesen SEPA-QR-Code'); // PLAIN Text shown before QR code in TY page
+define('muxp_THANKYOU_PAGE','For a convenient payment scan this qr code! Für eine bequeme Zahlung scanne diesen SEPA-QR-Code'); // PLAIN Text shown before QR code in TY page
 define('muxp_THANKYOU_EMAIL','Für eine bequeme Zahlung scanne diesen SEPA-QR-Code. Einige Email-Clients zeigen hier leider nichts an.'); // PLAIN Text shown before QR code in Email 
 define('muxp_BACS_IBAN',''); // optional: insert your IBAN as fallback
 define('muxp_BACS_BIC',''); // optional: insert your BIC as fallback
