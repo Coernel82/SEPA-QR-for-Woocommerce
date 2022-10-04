@@ -64,7 +64,7 @@ function muxp_add_text_to_thankyoupage($order_id) {
     // do we need the user? if so: $user = $order->get_user();
 	if ( !empty($order->get_total()) && (float)$order->get_total() > 0 ) {
 		echo '<p>' . esc_attr(muxp_THANKYOU_PAGE) . '<br>';
-		echo '<img class="bcas-qrcode" src="' . esc_attr(muxp_get_qrcode($order->get_total(), $order_id)) . '" alt="qr-code"></p>';
+		echo '<img class="bacs-qrcode" src="' . esc_attr(muxp_get_qrcode($order->get_total(), $order_id)) . '" alt="qr-code"></p>';
 	}
 }
 
