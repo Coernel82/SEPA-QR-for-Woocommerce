@@ -63,8 +63,8 @@ function muxp_add_text_to_thankyoupage($order_id) {
 	$order_data = $order->get_data(); 
     // do we need the user? if so: $user = $order->get_user();
 	if ( !empty($order->get_total()) && (float)$order->get_total() > 0 ) {
-		echo '<p>' . muxp_THANKYOU_PAGE . '<br>';
-		echo '<img class="bcas-qrcode" src="' . muxp_get_qrcode($order->get_total(), $order_id) . '" alt="qr-code"></p>';
+		echo '<p>' . esc_attr(muxp_THANKYOU_PAGE) . '<br>';
+		echo '<img class="bcas-qrcode" src="' . esc_attr(muxp_get_qrcode($order->get_total(), $order_id)) . '" alt="qr-code"></p>';
 	}
 }
 
@@ -85,7 +85,7 @@ function muxp_email_after_order_table( $order, $sent_to_admin, $plain_text, $ema
 	// if so replace image with a link to the  qr minipage ( site_url() . '?' . muxp_QUERY_PARAM . '=' . md5($order->get_total(). '_' . $order->get_id())
 	// and activate muxp_USE_TRANSIENTS 
 	if ( !empty($order->get_total()) && (float)$order->get_total() > 0 && $order->get_payment_method() == 'bacs' && ('on-hold' == $order->status || 'pending' == $order->status)) {
-		echo '<p>' . muxp_THANKYOU_EMAIL . '<br> <img class="bacs-qrcode" src="' . muxp_get_qrcode($order->get_total(), $order->get_id()) . '"></p>';
+		echo '<p>' . esc_attr(muxp_THANKYOU_EMAIL) . '<br> <img class="bacs-qrcode" src="' . esc_attr(muxp_get_qrcode($order->get_total(), $order->get_id())) . '"></p>';
 	}
 }
 
