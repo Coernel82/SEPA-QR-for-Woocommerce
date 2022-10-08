@@ -3,10 +3,13 @@ Plug-and-Play Plugin for Woocommerce
 # Before you start
 The plugin comes as is and free. However a real person has put real work into it. So if you use it please do s.th. good. Use your efforts, your time for beneficial projects or whatever!
 # Prerequisite
-php GD2 extension must be installed as the QR-Code generator by [fellwell15](https://github.com/fellwell5/bezahlcode/) requires this.
+php GD2 extension must be installed as the QR-Code generator by [fellwell15](https://github.com/fellwell5/bezahlcode/) requires this. **I guess this is a standard module and for most people nothing has to be done here!**
 # Installation
 Nothing special:
-* (when released by Wordpress: Search for it and install the usual way)
+* Search for SEPA QR in the WordPress Plugin directory and you will find https://wordpress.org/plugins/mxp-sepa-qr-code-addon-for-woocommerce
+* click install and acitvate
+
+## Manual installation
 * Download the ZIP-file via "Code --> Download Zip"
 * Extract ZIP-File and make a new ZIP-File from the mxp-sepaqr directory
 * In Woocommerce via "install" and upload or manually placing mxp-sepaqr.zip into the plugin folder.
@@ -33,11 +36,12 @@ I use a plugin for [PDF-invoices and packaging slips](https://docs.wpovernight.c
 /* QR-Code in invoices */
 add_action( 'wpo_wcpdf_after_order_details', 'wpo_wcpdf_qr_code', 10, 2 );
 function wpo_wcpdf_qr_code ($document_type, $order) {
-	require_once WP_PLUGIN_DIR . '/mxp-sepaqr/muxp-sepaqr.php';
+	require_once WP_PLUGIN_DIR . '/mxp-sepa-qr-code-addon-for-woocommerce/muxp-sepaqr.php';
     $muxp_order = wc_get_order( $order);
 	$order_id  = $order->get_id();
  	if ( !empty($muxp_order->get_total()) && (float)$order->get_total() > 0 ) {
-		echo '<img class="bcas-qrcode" src="' . muxp_get_qrcode($order->get_total(), $order_id) . '" alt="qr-code"></p>';
+		echo '<h1>QR-Code for your online banking app<h1>';
+		echo '<img class="bacs-qrcode" src="' . esc_attr(muxp_get_qrcode($order->get_total(), $order_id)) . '" alt="qr-code"></p>';
 	} 
 }
 ```
