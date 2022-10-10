@@ -1,0 +1,179 @@
+# Translation of Plugins - SEPA QR-Code for Woocommerce (GDPR-compliant) - Stable Readme (latest release) in German
+# This file is distributed under the same license as the Plugins - SEPA QR-Code for Woocommerce (GDPR-compliant) - Stable Readme (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2022-10-10 09:24:56+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/4.0.0-alpha.3\n"
+"Language: de\n"
+"Project-Id-Version: Plugins - SEPA QR-Code for Woocommerce (GDPR-compliant) - Stable Readme (latest release)\n"
+
+#. Short description.
+#, gp-priority: high
+msgid "Adds a SEPA-QR Code for bank transfer payments (bacs) in the WooCommerce Thankyou page and Woocommerce emails. The QR-Code can be hooked into other pl &hellip;"
+msgstr "Fügt einen SEPA-QR-Code für Überweisungen (bacs) zur WooCommer Thankyou-Seite und den WooCommerce Emails zu. Das Plugin kann per Hook den QR-Code in anderen Plugins anzeigen."
+
+#. Plugin name.
+#, gp-priority: high
+msgid "SEPA QR-Code for Woocommerce (GDPR-compliant)"
+msgstr "SEPA QR-Code für WooCommerce (DSGVO-konform)"
+
+#. Found in description paragraph.
+msgid "The program has been written by a professional programmer - however fully free of charge and without detailed knowledge about WooCommerce. I try to assist you in the support forum or on GitHub the best I can but my knowledge is limited."
+msgstr "Das Programm wurde von einem professionellen Programmierer geschrieben, jedoch komplett ehrenamtlich und ohne detailliertes Wissen über WooCommerce. Ich versuche im Supportforum oder bei GitHub so gut es geht Hilfestellung zu leisten, jedoch ist mein Wissen limitiert."
+
+#. Found in description paragraph.
+msgid "Adds a SEPA-QR Code for bank transfer payments (bacs) in the WooCommerce Thankyou page and Woocommerce emails. The QR-Code can be hooked into other plugins."
+msgstr "Fügt einen SEPA-QR-Code für Überweisungen (bacs) zur WooCommerce-Danke-Seite und zu den WooCommerce-Emails hinzu. Der QR-Code kann per Hook in anderen Plugins genutzt werden."
+
+#. Found in description header.
+msgid "Support"
+msgstr "Support"
+
+#. Found in faq paragraph.
+msgid ""
+"This surely is due to the fact that some email clients won't show Base64-encoded images. Your help is appreciated! Have a look at https://github.com/Coernel82/SEPA-QR-for-Woocommerce/issues/17\n"
+"Workaround: Hook it into your PDF-invoices! (see above!)"
+msgstr ""
+"Dieses liegt daran, dass einige Emailprogramme keine Base64-kodierten Bilder anzeigen. Deine Hilfe wird hoch geschätztz! Schaue dir https://github.com/Coernel82/SEPA-QR-for-Woocommerce/issues/17 an.\n"
+"Workaround: Füge den QR-Code per Hook in PDF-Rechnungen ein! (siehe oben!)"
+
+#. Found in description list item.
+msgid "the prefix mxp is used throghout the plugin to avoid collisions with other plugins and functions. mxp stands for www.musicalexperten.de (musical experts). Remember where you've seen it first! ;-)"
+msgstr "Die Vorsilbe muxp wird im gesamten Plugin genutzt um Kollisionen mit anderen Plugins und Funktionen zu vermeiden. muxp steht für www.musicalexperten.de. Also: Vergiss nicht, wo du es zuerst gesehen hast! ;-)"
+
+#. Found in description list item.
+msgid "plugin registers a get-parameter (configurable, default mxp_qr) for testing purposes and, if desired, to create links to the cached QR codes."
+msgstr "Das Plugin registriert einen get-paramter (konfigurarierbar, default mupx_qr) für Testzwecke und erstellt links zu gechachten QR-Codes, wenn gewünscht."
+
+#. Found in description list item.
+msgid "the QR code generator is from <a href=\"https://github.com/fellwell5/bezahlcode/\">fellwell15</a>"
+msgstr "Der QR-Code-Generator stammt von <a href=\"https://github.com/fellwell5/bezahlcode/\">fellwell15</a>"
+
+#. Found in description list item.
+msgid "the QR code generator creates the QR-code locally. There is <strong>no Google-API nor external server in use</strong>!"
+msgstr "der QR-Code-Generator erstellt die QR-Codes lokal auf dem Server. Es wird <strong>keine Google-API oder sonstiger externer Server genutzt</strong>!"
+
+#. Found in description header.
+msgid "Full integration in Woocommerce"
+msgstr "Komplette integration in WooCommerce"
+
+#. Found in description header.
+msgid "Remarks"
+msgstr "Kommentare"
+
+#. Found in description header.
+msgid "Testing and troubleshooting"
+msgstr "Testen &amp; Fehlerbehebung"
+
+#. Found in description header.
+msgid "Hooking into other plugins"
+msgstr "Hook für andere Plugins"
+
+#. Found in description header.
+msgid "What happens in the backend:"
+msgstr "Was im Hintergrund (Backend) passiert:"
+
+#. Found in description header.
+msgid "Prerequisite"
+msgstr "Voraussetzung"
+
+#. Found in description header.
+msgid "Before you start"
+msgstr "Bevor es losgeht"
+
+#. Found in faq paragraph.
+msgid "The plugin creates the QR-Code on your server and it does not use any external resources."
+msgstr "Das Plugin erstellt QR-Codes auf deinem Server und nutzt dazu keine externen Ressourcen."
+
+#. Found in faq header.
+msgid "What about privacy / GDPR"
+msgstr "Was ist mit Datenschutz / DSGVO?"
+
+#. Found in faq header.
+msgid "I can't see the QR-Code in a specific email client"
+msgstr "Ich kann den QR-Code in einem bestimmten Emailprogramm nicht sehen"
+
+#. Found in description paragraph.
+msgid "I am more then happy if someone integrates the code into the Woocommerce core! The topic is discussed here: https://github.com/woocommerce/woocommerce/issues/27661"
+msgstr "Ich bin mehr als glücklich, wenn jemand den Programmcode in den Kern von WooCommerce integriert. Das Thema wird hier diskutiert: https://github.com/woocommerce/woocommerce/issues/27661"
+
+#. Found in description paragraph.
+msgid "Storing the QR code in cache or transients is only needed if you want to use a link instead of a picture inside the email. Details in the program code."
+msgstr "Den QR-Code im Cache oder in transients zu speichern ist nur nötig, wenn ein Link an Stelle eines Bildes in den Emails genutzt werden soll. Details im Programmcode."
+
+#. Found in description paragraph.
+msgid ""
+"www.yourwebpage.de/?mxp_qr=351436ef4b279e1811a6c68a2dd58b1b \n"
+"results in a sad smiley. <a href=\"https://www.musicalexperten.de/?mxp_qr=351436ef4b279e1811a6c68a2dd58b1b\">Working example</a>"
+msgstr ""
+"www.yourwebpage.de/?mxp_qr=351436ef4b279e1811a6c68a2dd58b1b \n"
+"zeigt ein trauriges Smiley an. <a href=\"https://www.musicalexperten.de/?mxp_qr=351436ef4b279e1811a6c68a2dd58b1b\">Funktionierendes Beispiel</a>"
+
+#. Found in description paragraph.
+msgid ""
+"www.yourwebpage.de/?mxp_qr=something  = creates a real QR with dummyvalues 11-11\n"
+"<a href=\"https://www.musicalexperten.de/?mxp_qr=something\">Working example</a>"
+msgstr ""
+"www.yourwebpage.de/?mxp_qr=something  = erstellt einen QR-Code mit den Dummywerten 11-11\n"
+"<a href=\"https://www.musicalexperten.de/?mxp_qr=something\">Funktionierendes Beispiel</a>"
+
+#. Found in description paragraph.
+msgid "Install the plugin and order s.th. in your shop using BACS (direct bank transfer)."
+msgstr "Installiere das Plugin und bestelle etwas in deinem Shop mit BACS (Überweisung) als Zahlungsmittel."
+
+#. Found in description paragraph.
+msgid "I use a plugin for <a href=\"https://docs.wpovernight.com/home/woocommerce-pdf-invoices-packing-slips/pdf-template-action-hooks/\">PDF-invoices and packaging slips</a>.  Refer to this sample to hook the QR-Code into whatever you like:"
+msgstr "Ich nutze ein Plugin für <a href=\"https://docs.wpovernight.com/home/woocommerce-pdf-invoices-packing-slips/pdf-template-action-hooks/\">PDF-Rechnungen und Lieferscheine</a>.  Halte dich an dieses Beispiel um den QR-Code in Wasauchimmer anzuzueigen:"
+
+#. Found in installation paragraph.
+msgid ""
+"Nothing special:\n"
+"* Click install and activate"
+msgstr "* Auf Installieren klicken und aktivieren"
+
+#. Found in description paragraph.
+msgid "php GD2 extension must be installed as the QR-Code generator by <a href=\"https://github.com/fellwell5/bezahlcode/\">fellwell15</a> requires this."
+msgstr "Die php GD2 Erweiterung muss installiert werden, da der QR-Code-Generator von <a href=\"https://github.com/fellwell5/bezahlcode/\">fellwell15</a> dieses benötigt."
+
+#. Found in description paragraph.
+msgid "The plugin comes as is and free. However a real person has put real work into it. So if you use it please do s.th. good. Use your efforts, your time for beneficial projects or whatever!"
+msgstr "Das Plugin kommt so wie es ist ohne Garantie und kostenlos. Jedoch hat eine echte Person echte Arbeit hineingesteckt. Wenn du es also nutzt mache im Gegenzug etwas Gutes. Nutze deine Mühen für Benefizprojekte oder was auch immer!"
+
+#. Found in description header.
+msgid "To find an existing cached QR-Code, query for a valid md5 string == If it does not exist in cache or transients, a sad smiley will appear."
+msgstr "Um einen existiereneden, gechachten QR-Code zu finden, suche einen gültigen md5 string. Wenn dieser nicht im Cache oder den transients existiert, erscheint ein trauriger Smiley."
+
+#. Found in description header.
+msgid "To test if the QR-Code generator is working"
+msgstr "Um zu testen, ob der QR-Code generator funktioniert"
+
+#. Found in description header.
+msgid "Simple way"
+msgstr "Der einfache Weg"
+
+#. Screenshot description.
+msgid "example how the qr-code is hooked into a pdf envoice"
+msgstr "Beispiel, wie der QR-Code per Hook in einer PDF-Rechnung erscheint"
+
+#. Screenshot description.
+msgid "the QR-Code gets added to the WooCommerce order email"
+msgstr "der QR-Code wird zur WooCommerce Bestellbestätigungsemail hinzugefügt"
+
+#. Found in changelog list item.
+#, gp-priority: low
+msgid "added prefix muxp to the bacs-qrcode css class for the QR code. If you have used .bacs-qrcode you have to change it to muxp-bacs-qrcode"
+msgstr "muxp-Vorsilbe zur bacs-qrcode CSS-Klasse für den QR-Code hinzugefügt. Wenn du .bacs-qrcode genutzt hast, musst du die KLasse zu muxp-bacs-qrcode ändern."
+
+#. Found in changelog list item.
+#, gp-priority: low
+msgid "added loacalization"
+msgstr "Übersetzung hinzugefügt"
+
+#. Found in changelog list item.
+#, gp-priority: low
+msgid "initial commit to the wordpress directory"
+msgstr "Erstveröffentlichung im WordPress-Verzeichnis"
