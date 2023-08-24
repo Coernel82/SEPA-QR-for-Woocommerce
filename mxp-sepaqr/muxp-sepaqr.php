@@ -447,6 +447,49 @@ function muxp_valid_md5($md5 ='') {
 }
 
 
+add_action('admin_menu', 'muxp_add_admin_menu');
 
+function muxp_add_admin_menu() {
+	add_options_page(__('SEPA QR', 'mxp-sepa-qr-code-addon-for-woocommerce'), __('SEPA QR', 'mxp-sepa-qr-code-addon-for-woocommerce'), 'manage_options', 'muxp_options', 'muxp_settings_page');
+}
+
+function muxp_settings_page() {
+	?>
+        <div class="wrap">
+            <h1><?php echo __(esc_html(get_admin_page_title()), 'mxp-sepa-qr-code-addon-for-woocommerce'); ?></h1>
+            <form action="options.php" method="post">
+                <div>
+                    <?php
+                    settings_fields('muxp_settings');
+                    ?>
+                </div>
+                <div>
+                    <?php
+                    do_settings_sections('muxp_settings'); ?>
+                    <input name="submit" class="button button-primary" type="submit" value="<?php esc_attr_e('Save'); ?>" />
+                </div>
+            </form>
+        </div>
+<?php
+}
+
+add_action('admin_init', 'muxp_admin_init');
+
+function muxp_admin_init() {
+	add_settings_section('muxp_gdpr', __('GDPR', 'mxp-sepa-qr-code-addon-for-woocommerce'), 'muxp_settings_callback', 'muxp_settings');
+	register_setting('muxp_settings', 'muxp_store_qr_code_as_image');
+	add_settings_field('muxp_store_qr_code_as_image', __('Store QR code as image', 'mxp-sepa-qr-code-addon-for-woocommerce'), 'muxp_store_qr_code_as_image_setting_html', 'muxp_settings', 'muxp_gdpr');
+}
+
+function muxp_settings_callback() {
+}
+
+function muxp_store_qr_code_as_image_setting_html() {
+	$store_qr_code_as_image = get_option('muxp_store_qr_code_as_image', 'off');
 ?>
-
+		<input type="checkbox" name="muxp_store_qr_code_as_image" <?php checked($store_qr_code_as_image, 'on', true); ?> />
+        <p class="description">
+            <?php _e("This will store the QR code as an image on your server instead of generating a transient base64 string. This has consequences for the GDPR compliance of your website and you should inform your customers as such.", 'mxp-sepa-qr-code-addon-for-woocommerce') ?>
+        </p>
+    <?php
+}
