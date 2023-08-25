@@ -469,7 +469,10 @@ function muxp_set_persistent($id, $qrcode) {
 		mkdir($target_dir);
 	}
 
-	file_put_contents($target_dir . "/$id.png", base64_decode($qrcode));
+	// Remove the 'data:image/png;base64,' part
+	$qrcode_stripped = explode(',', $qrcode)[1];
+
+	file_put_contents($target_dir . "/$id.png", base64_decode($qrcode_stripped));
 
 	return wp_upload_dir()['baseurl'] . "/muxp-sepa-qr-code-addon-for-woocommerce/$id.png";
 }
