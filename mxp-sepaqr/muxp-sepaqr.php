@@ -529,7 +529,7 @@ function muxp_store_qr_code_as_image_setting_html() {
 ?>
 		<input type="checkbox" name="muxp_store_qr_code_as_image" <?php checked($store_qr_code_as_image, 'on', true); ?> />
         <p class="description">
-            <?php _e("This will store the QR code as an image on your server instead of generating a transient base64 string. This has consequences for the GDPR compliance of your website and you should inform your customers as such.", 'mxp-sepa-qr-code-addon-for-woocommerce') ?>
+            <?php _e("This will store the QR code as an image on your server instead of generating a transient base64 string.", 'mxp-sepa-qr-code-addon-for-woocommerce') ?>
         </p>
     <?php
 }
