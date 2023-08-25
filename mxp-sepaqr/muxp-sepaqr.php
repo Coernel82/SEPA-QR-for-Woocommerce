@@ -533,3 +533,16 @@ function muxp_store_qr_code_as_image_setting_html() {
         </p>
     <?php
 }
+
+register_activation_hook(__FILE__, 'muxp_activate');
+
+function muxp_activate() {
+	register_uninstall_hook(__FILE__, 'muxp_uninstall');	
+}
+
+function muxp_uninstall() {
+	$target_dir = wp_upload_dir()['basedir'] . '/muxp-sepa-qr-code-addon-for-woocommerce';
+	if (is_dir($target_dir)) {
+		rmdir($target_dir);
+	}
+}
