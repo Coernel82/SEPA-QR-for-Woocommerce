@@ -166,6 +166,10 @@ function muxp_email_after_order_table( $order, $sent_to_admin, $plain_text, $ema
 
 	// and activate muxp_USE_TRANSIENTS 
 
+	if ($sent_to_admin) {
+		return;
+	}
+
 	if ( !empty($order->get_total()) && (float)$order->get_total() > 0 && $order->get_payment_method() == 'bacs' && ('on-hold' == $order->status || 'pending' == $order->status)) {
 
 		$store_qr_code_as_image = get_option('muxp_store_qr_code_as_image', 'off');
