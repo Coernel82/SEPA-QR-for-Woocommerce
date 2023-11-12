@@ -1,3 +1,5 @@
+# PLEASE USE THE CODE FROM WORDPRESS SVN
+As reported in the issues section I have uploaded outdated code here. As I am very busy I cannot have a thorough look at it right now. So **please use the code from the WordPress SVN**!
 # SEPA-QR-for-Woocommerce (GDPR-compliant)
 Plug-and-Play Plugin for Woocommerce
 # Before you start
