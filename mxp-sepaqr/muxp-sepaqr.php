@@ -46,21 +46,12 @@ define('muxp_BACS_IBAN',''); // optional: insert your IBAN as fallback
 define('muxp_BACS_BIC',''); // optional: insert your BIC as fallback
 define('muxp_BACS_COMPANY', 'recipient'); // optional: insert your business name as fallback
 
-// Translatable variables
-
-$muxp_THANKYOU_PAGE ='For a convenient payment scan this qr code!'; // PLAIN Text shown before QR code in TY page
-$muxp_THANKYOU_EMAIL = 'For a convenient payment scan this qr code! Some email clients unfortunately will not show Base64 encoded images. Sorry for that!'; // PLAIN Text shown before QR code in Email 
-$muxp_PURPOSE_PREFIX = 'Order-ID:'; // this string will be prefixed to  the order ID in SEPA purpose Text
-
 
 /* 
 define('muxp_THANKYOU_PAGE', 'For a convenient payment scan this qr code!'); // PLAIN Text shown before QR code in TY page
 define('muxp_THANKYOU_EMAIL', 'For a convenient payment scan this qr code! Some email clients unfortunately will not show Base64 encoded images. Sorry for that!'); // PLAIN Text shown before QR code in Email 
 define('muxp_PURPOSE_PREFIX', 'Order-ID:'); // this string will be prefixed to  the order ID in SEPA purpose Text
  */
-
-
-__('Hello underscore only' , 'mxp-sepa-qr-code-addon-for-woocommerce');
 
 
 // Dummy image for dev purposes:
@@ -72,15 +63,15 @@ define('muxp_SAD_SMILEY','data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEA
 *   add html snippet with qr-code after data table in thankyou page
 *   if the total amount is greater than 0
 */
-function muxp_add_text_to_thankyoupage($order_id, $muxp_THANKYOU_PAGE) {
+function muxp_add_text_to_thankyoupage($order_id) {
 
     $order = wc_get_order( $order_id );
 	$order_data = $order->get_data(); 
     // do we need the user? if so: $user = $order->get_user();
 	if ( !empty($order->get_total()) && (float)$order->get_total() > 0 ) {
-		echo '<p>' . esc_attr(__($muxp_THANKYOU_PAGE, 'mxp-sepa-qr-code-addon-for-woocommerce')) . '<br>';
+		echo '<p>' . esc_attr(__('For a convenient payment scan this qr code!' , 'mxp-sepa-qr-code-addon-for-woocommerce')) . '<br>';
 		echo '<img class="muxp-bacs-qrcode" src="' . esc_attr(muxp_get_qrcode($order->get_total(), $order_id)) . '" alt="qr-code"></p>';
-	}
+	} 
 }
 
 // only executed when using bacs as payment:
@@ -95,12 +86,12 @@ add_action( 'woocommerce_thankyou_bacs', 'muxp_add_text_to_thankyoupage' );
 *   only shown if bacs is used as payment method
 */
 
-function muxp_email_after_order_table( $order, $sent_to_admin, $plain_text, $email, $muxp_THANKYOU_EMAIL ) { 
+function muxp_email_after_order_table( $order, $sent_to_admin, $plain_text, $email) { 
 	// TODO: check whether spam filters are triggered by embedded image data, 
 	// if so replace image with a link to the  qr minipage ( site_url() . '?' . muxp_QUERY_PARAM . '=' . md5($order->get_total(). '_' . $order->get_id())
 	// and activate muxp_USE_TRANSIENTS 
 	if ( !empty($order->get_total()) && (float)$order->get_total() > 0 && $order->get_payment_method() == 'bacs' && ('on-hold' == $order->status || 'pending' == $order->status)) {
-		echo '<p>' . esc_attr(__($muxp_THANKYOU_EMAIL, 'mxp-sepa-qr-code-addon-for-woocommerce')) . '<br> <img class="muxp-bacs-qrcode" src="' . esc_attr(muxp_get_qrcode($order->get_total(), $order->get_id())) . '"></p>';
+		echo '<p>' . esc_attr(__('For a convenient payment scan this qr code! Some email clients unfortunately will not show Base64 encoded images. Sorry for that!' ,'mxp-sepa-qr-code-addon-for-woocommerce')) . '<br> <img class="muxp-bacs-qrcode" src="' . esc_attr(muxp_get_qrcode($order->get_total(), $order->get_id())) . '"></p>';
 	}
 }
 
@@ -185,9 +176,9 @@ function muxp_get_qrcode($amount,$orderid) {
  * we use the local phpqrcode generation method to avoid external dependencies and data transmission
  */
   
-function muxp_create_qrcode ($amount,$orderid, $muxp_PURPOSE_PREFIX) {
+function muxp_create_qrcode ($amount,$orderid) {
 
- $payloadtext = __($muxp_PURPOSE_PREFIX) . ' ' . $orderid;
+ $payloadtext = __('Order-ID:' , 'mxp-sepa-qr-code-addon-for-woocommerce') . ' ' . $orderid;
  $bacs_accounts  = get_option( 'woocommerce_bacs_accounts');
  if ( ! empty( $bacs_accounts[0] ) ) {
     $iban =  $bacs_accounts[0]['iban'];
