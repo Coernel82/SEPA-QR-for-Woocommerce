@@ -1,7 +1,7 @@
 # A little comment on the archiving of this repository
-As you can see this repository has been archived. The most active fork is the one of petermorlin: https://github.com/petermorlion/SEPA-QR-for-Woocommerce 
+As you can see this repository has been archived. The most active fork is the one of petermorlion: https://github.com/petermorlion/SEPA-QR-for-Woocommerce 
 This project was just a hobby project and I had help by a professional programmer for the first version. Now I am on my own - and I am not a programmer at all. So the project was very time consuming. Due to my wife having a baby in summer and also having an anxiety disorder for 7 months now my resources are limited. I am so open about the mental illness as I want to raise awareness in the public that mental illnesses are very, very common, especially depression and anxiety disorders. (I am fine though, am able to live a good life and work etc.! - also thanks to good medication!)
-I am very happy that petermorlin is taking over to keep this QR-Code-project alive. However as Peter and I agree this project should be obsolete as it should be included in the core of WooCommerce. You can find the discussion here and also adress this: https://github.com/woocommerce/woocommerce/issues/27661#issuecomment-1927336079
+I am very happy that petermorlion is taking over to keep this QR-Code-project alive. However as Peter and I agree this project should be obsolete as it should be included in the core of WooCommerce. You can find the discussion here and also adress this: https://github.com/woocommerce/woocommerce/issues/27661#issuecomment-1927336079
 # SEPA-QR-for-Woocommerce (GDPR-compliant)
 Plug-and-Play Plugin for Woocommerce
 # Before you start
