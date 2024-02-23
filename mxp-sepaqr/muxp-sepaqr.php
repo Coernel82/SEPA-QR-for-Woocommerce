@@ -90,8 +90,30 @@ function muxp_email_after_order_table( $order, $sent_to_admin, $plain_text, $ema
 	// TODO: check whether spam filters are triggered by embedded image data, 
 	// if so replace image with a link to the  qr minipage ( site_url() . '?' . muxp_QUERY_PARAM . '=' . md5($order->get_total(). '_' . $order->get_id())
 	// and activate muxp_USE_TRANSIENTS 
+
+	if ($sent_to_admin) {
+		return;
+	}
+
 	if ( !empty($order->get_total()) && (float)$order->get_total() > 0 && $order->get_payment_method() == 'bacs' && ('on-hold' == $order->status || 'pending' == $order->status)) {
-		echo '<p>' . esc_attr(__('For a convenient payment scan this qr code! Some email clients unfortunately will not show Base64 encoded images. Sorry for that!' ,'mxp-sepa-qr-code-addon-for-woocommerce')) . '<br> <img class="muxp-bacs-qrcode" src="' . esc_attr(muxp_get_qrcode($order->get_total(), $order->get_id())) . '"></p>';
+
+		$store_qr_code_as_image = get_option('muxp_store_qr_code_as_image', 'off');
+
+		?>
+		<p>
+			<?php
+			if ($store_qr_code_as_image !== 'on') {
+				echo esc_attr(__('For a convenient payment scan this qr code! Some email clients unfortunately will not show Base64 encoded images. Sorry for that!' ,'mxp-sepa-qr-code-addon-for-woocommerce'));
+			} else {
+				echo esc_attr(__('For a convenient payment scan this qr code!' ,'mxp-sepa-qr-code-addon-for-woocommerce'));
+			}
+			
+			?>
+			<br>
+			<img class="muxp-bacs-qrcode" src="<?php echo esc_attr(muxp_get_qrcode($order->get_total(), $order->get_id())) ?>" alt="qr-code">
+		</p>
+		<?php
+
 	}
 }
 
@@ -128,8 +150,8 @@ function muxp_qrpage_from_hash($template) {
 	echo '<html><body><div>' . esc_attr($html) . ' </div></body></html>';
 	// bail out without returning since we are done and do not want a complete WP page
 	exit;
-
 }
+
 // TODO : check for a better place than template_redirect to hook into 
 add_action('template_redirect', 'muxp_qrpage_from_hash');
 
@@ -164,8 +186,16 @@ function muxp_get_qrcode($amount,$orderid) {
 		return false;
 	}
 	
-  muxp_set_transient( $amount,$orderid, $qrcode );	
-  return $qrcode;
+	$store_qr_code_as_image = get_option('muxp_store_qr_code_as_image', 'off');
+
+	if ($store_qr_code_as_image !== 'on') {
+		// Default to transient QR codes
+		muxp_set_transient( $amount,$orderid, $qrcode );
+		return $qrcode;
+	} else {
+		$qrcode_url = muxp_set_persistent($orderid, $qrcode);
+		return $qrcode_url;
+	}
 }
 
 
@@ -231,10 +261,85 @@ function muxp_set_transient ($amount,$id,$qrcode) {
 	  return $store;
 }
 
+/**
+ * Stores the QR code as an image on the server and return the url.
+ */
+function muxp_set_persistent($id, $qrcode) {
+	$target_dir = wp_upload_dir()['basedir'] . '/muxp-sepa-qr-code-addon-for-woocommerce';
+	if (!is_dir($target_dir)) {
+		mkdir($target_dir);
+	}
+
+	// Remove the 'data:image/png;base64,' part
+	$qrcode_stripped = explode(',', $qrcode)[1];
+
+	file_put_contents($target_dir . "/$id.png", base64_decode($qrcode_stripped));
+
+	return wp_upload_dir()['baseurl'] . "/muxp-sepa-qr-code-addon-for-woocommerce/$id.png";
+}
+
 // helper to validate  the string is syntactically correct md5
 
 function muxp_valid_md5($md5 ='') {
   	return strlen($md5) == 32 && ctype_xdigit($md5);
 }
 
+add_action('admin_menu', 'muxp_add_admin_menu');
+
+function muxp_add_admin_menu() {
+	add_options_page(__('SEPA QR', 'mxp-sepa-qr-code-addon-for-woocommerce'), __('SEPA QR', 'mxp-sepa-qr-code-addon-for-woocommerce'), 'manage_options', 'muxp_options', 'muxp_settings_page');
+}
+
+function muxp_settings_page() {
+	?>
+        <div class="wrap">
+            <h1><?php echo __(esc_html(get_admin_page_title()), 'mxp-sepa-qr-code-addon-for-woocommerce'); ?></h1>
+            <form action="options.php" method="post">
+                <div>
+                    <?php
+                    settings_fields('muxp_settings');
+                    ?>
+                </div>
+                <div>
+                    <?php
+                    do_settings_sections('muxp_settings'); ?>
+                    <input name="submit" class="button button-primary" type="submit" value="<?php esc_attr_e('Save'); ?>" />
+                </div>
+            </form>
+        </div>
+<?php
+}
+
+add_action('admin_init', 'muxp_admin_init');
+
+function muxp_admin_init() {
+	add_settings_section('muxp_gdpr', __('GDPR', 'mxp-sepa-qr-code-addon-for-woocommerce'), 'muxp_settings_callback', 'muxp_settings');
+	register_setting('muxp_settings', 'muxp_store_qr_code_as_image');
+	add_settings_field('muxp_store_qr_code_as_image', __('Store QR code as image', 'mxp-sepa-qr-code-addon-for-woocommerce'), 'muxp_store_qr_code_as_image_setting_html', 'muxp_settings', 'muxp_gdpr');
+}
+
+function muxp_settings_callback() {
+}
+
+function muxp_store_qr_code_as_image_setting_html() {
+	$store_qr_code_as_image = get_option('muxp_store_qr_code_as_image', 'off');
 ?>
+		<input type="checkbox" name="muxp_store_qr_code_as_image" <?php checked($store_qr_code_as_image, 'on', true); ?> />
+        <p class="description">
+            <?php _e("This will store the QR code as an image on your server instead of generating a transient base64 string.", 'mxp-sepa-qr-code-addon-for-woocommerce') ?>
+        </p>
+    <?php
+}
+
+register_activation_hook(__FILE__, 'muxp_activate');
+
+function muxp_activate() {
+	register_uninstall_hook(__FILE__, 'muxp_uninstall');	
+}
+
+function muxp_uninstall() {
+	$target_dir = wp_upload_dir()['basedir'] . '/muxp-sepa-qr-code-addon-for-woocommerce';
+	if (is_dir($target_dir)) {
+		rmdir($target_dir);
+	}
+}
