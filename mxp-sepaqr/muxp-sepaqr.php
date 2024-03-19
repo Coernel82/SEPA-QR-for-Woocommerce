@@ -189,6 +189,9 @@ function muxp_create_qrcode ($amount,$orderid) {
   if ( empty($iban) ) { $iban = muxp_BACS_IBAN; }
   if ( empty($bic) ) { $bic = muxp_BACS_BIC; }
   if ( empty($company) ) { $company = muxp_BACS_COMPANY; }
+
+  // Whitespaces are not permited in the electronic format of an IBAN
+  $iban = preg_replace('/\s+/', '', $iban);
   
   require_once(dirname(__FILE__) . "/vendor/bezahlcode/bezahlcode.class.php");
   
